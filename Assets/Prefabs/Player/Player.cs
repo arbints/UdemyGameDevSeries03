@@ -9,10 +9,13 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 20f; 
     Vector2 moveInput;
 
+    Camera mainCam;
+
     // Start is called before the first frame update
     void Start()
     {
         moveStick.onStickValueUpdated += moveStickmoveStick;
+        mainCam = Camera.main;
     }
 
     void moveStickmoveStick(Vector2 inputValue)
@@ -23,6 +26,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        characterController.Move(new Vector3(moveInput.x, 0, moveInput.y) * Time.deltaTime * moveSpeed);
+        Vector3 rightDir = mainCam.transform.right;
+        Vector3 upDir = Vector3.Cross(rightDir, Vector3.up);
+        characterController.Move((rightDir * moveInput.x + upDir * moveInput.y) * Time.deltaTime * moveSpeed);
     }
 }
