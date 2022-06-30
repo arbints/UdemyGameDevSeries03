@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] JoyStick moveStick;
     [SerializeField] CharacterController characterController; 
     [SerializeField] float moveSpeed = 20f; 
+    [SerializeField] float turnSpeed = 30f; 
     Vector2 moveInput;
 
     Camera mainCam;
@@ -30,10 +31,16 @@ public class Player : MonoBehaviour
     {
         Vector3 rightDir = mainCam.transform.right;
         Vector3 upDir = Vector3.Cross(rightDir, Vector3.up);
-        characterController.Move((rightDir * moveInput.x + upDir * moveInput.y) * Time.deltaTime * moveSpeed);
-        if(moveInput.magnitude != 0 && cameraController!=null)
+        Vector3 MoveDir = rightDir * moveInput.x + upDir * moveInput.y;
+        characterController.Move(MoveDir * Time.deltaTime * moveSpeed);
+        if(moveInput.magnitude != 0)
         {
-            cameraController.AddYawInput(moveInput.x);
+            float turnLerpAlpha = turnSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(MoveDir, Vector3.up), turnLerpAlpha);
+            if(cameraController != null)
+            {
+                cameraController.AddYawInput(moveInput.x);
+            }
         }
     }
 }
