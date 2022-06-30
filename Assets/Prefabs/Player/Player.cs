@@ -10,12 +10,14 @@ public class Player : MonoBehaviour
     Vector2 moveInput;
 
     Camera mainCam;
+    CameraController cameraController;
 
     // Start is called before the first frame update
     void Start()
     {
         moveStick.onStickValueUpdated += moveStickmoveStick;
         mainCam = Camera.main;
+        cameraController = FindObjectOfType<CameraController>();
     }
 
     void moveStickmoveStick(Vector2 inputValue)
@@ -29,5 +31,9 @@ public class Player : MonoBehaviour
         Vector3 rightDir = mainCam.transform.right;
         Vector3 upDir = Vector3.Cross(rightDir, Vector3.up);
         characterController.Move((rightDir * moveInput.x + upDir * moveInput.y) * Time.deltaTime * moveSpeed);
+        if(moveInput.magnitude != 0 && cameraController!=null)
+        {
+            cameraController.AddYawInput(moveInput.x);
+        }
     }
 }
