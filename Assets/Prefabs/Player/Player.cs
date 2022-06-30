@@ -45,27 +45,43 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 MoveDir = StickInputToWorldDir(moveInput);
-        Vector3 AimDir = MoveDir;
+        PerformMoveAndAim();
+        UpdateCamera();
+    }
 
-        if(aimInput.magnitude != 0)
+    private void PerformMoveAndAim()
+    {
+        Vector3 MoveDir = StickInputToWorldDir(moveInput);
+        characterController.Move(MoveDir * Time.deltaTime * moveSpeed);
+
+        UpdateAim(MoveDir);
+    }
+
+    private void UpdateAim(Vector3 currentMoveDir)
+    {
+        Vector3 AimDir = currentMoveDir;
+        if (aimInput.magnitude != 0)
         {
             AimDir = StickInputToWorldDir(aimInput);
         }
+        RotateTowards(AimDir);
+    }
 
-        if(AimDir.magnitude != 0)
+    private void UpdateCamera()
+    {
+        //player is move but not aiming, and cameraController exists
+        if (moveInput.magnitude != 0 && aimInput.magnitude == 0 && cameraController != null)
+        {
+            cameraController.AddYawInput(moveInput.x);
+        }
+    }
+
+    private void RotateTowards(Vector3 AimDir)
+    {
+        if (AimDir.magnitude != 0)
         {
             float turnLerpAlpha = turnSpeed * Time.deltaTime;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(AimDir, Vector3.up), turnLerpAlpha);
-        }
-
-        characterController.Move(MoveDir * Time.deltaTime * moveSpeed);
-        if(moveInput.magnitude != 0)
-        {
-            if(cameraController != null)
-            {
-                cameraController.AddYawInput(moveInput.x);
-            }
         }
     }
 }
