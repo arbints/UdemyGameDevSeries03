@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] CharacterController characterController; 
     [SerializeField] float moveSpeed = 20f; 
     [SerializeField] float turnSpeed = 30f; 
+    [SerializeField] float animTurnSpeed = 30f; 
     
     Vector2 moveInput;
     Vector2 aimInput;
@@ -16,6 +17,8 @@ public class Player : MonoBehaviour
     Camera mainCam;
     CameraController cameraController;
     Animator animator;
+
+    float animatorTurnSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -87,10 +90,21 @@ public class Player : MonoBehaviour
 
     private void RotateTowards(Vector3 AimDir)
     {
+        float currentTurnSpeed = 0;
         if (AimDir.magnitude != 0)
         {
+            Quaternion prevRot = transform.rotation;
+        
             float turnLerpAlpha = turnSpeed * Time.deltaTime;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(AimDir, Vector3.up), turnLerpAlpha);
+
+            Quaternion currentRot = transform.rotation;
+            float Dir = Vector3.Dot(AimDir, transform.right) > 0 ? 1 : -1;
+            float rotationDelta = Quaternion.Angle(prevRot, currentRot) * Dir;
+            currentTurnSpeed = rotationDelta / Time.deltaTime;
         }
+        animatorTurnSpeed = Mathf.Lerp(animatorTurnSpeed, currentTurnSpeed, Time.deltaTime * animTurnSpeed);
+
+        animator.SetFloat("turnSpeed", animatorTurnSpeed);
     }
 }
