@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     Camera mainCam;
     CameraController cameraController;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
         aimStick.onStickValueUpdated += aimStickUpdated;
         mainCam = Camera.main;
         cameraController = FindObjectOfType<CameraController>();
+        animator = GetComponent<Animator>();
     }
 
     void aimStickUpdated(Vector2 inputValue)
@@ -52,9 +54,16 @@ public class Player : MonoBehaviour
     private void PerformMoveAndAim()
     {
         Vector3 MoveDir = StickInputToWorldDir(moveInput);
+
         characterController.Move(MoveDir * Time.deltaTime * moveSpeed);
 
         UpdateAim(MoveDir);
+
+        float forward = Vector3.Dot(MoveDir, transform.forward);
+        float right = Vector3.Dot(MoveDir, transform.right);
+
+        animator.SetFloat("forwardSpeed", forward);
+        animator.SetFloat("rightSpeed", right);
     }
 
     private void UpdateAim(Vector3 currentMoveDir)
