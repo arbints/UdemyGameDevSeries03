@@ -19,6 +19,7 @@ public abstract class Weapon : MonoBehaviour
     public void Init(GameObject owner)
     {
         Owner = owner;
+        UnEquip();
     }
 
     public void Equip()
