@@ -9,8 +9,11 @@ public class Player : MonoBehaviour
     [SerializeField] CharacterController characterController; 
     [SerializeField] float moveSpeed = 20f; 
     [SerializeField] float turnSpeed = 30f; 
-    [SerializeField] float animTurnSpeed = 30f; 
-    
+    [SerializeField] float animTurnSpeed = 30f;
+
+    [Header("Inventory")]
+    [SerializeField] InventoryComponent inventoryComponent;
+
     Vector2 moveInput;
     Vector2 aimInput;
 
@@ -25,9 +28,15 @@ public class Player : MonoBehaviour
     {
         moveStick.onStickValueUpdated += moveStickUpdated;
         aimStick.onStickValueUpdated += aimStickUpdated;
+        aimStick.onStickTaped += SwichWeapon;
         mainCam = Camera.main;
         cameraController = FindObjectOfType<CameraController>();
         animator = GetComponent<Animator>();
+    }
+
+    void SwichWeapon()
+    {
+        inventoryComponent.NextWeapon();
     }
 
     void aimStickUpdated(Vector2 inputValue)
