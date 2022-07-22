@@ -5,7 +5,11 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] string AttachSlotTag;
+    [SerializeField] float AttackRateMult = 1f;
     [SerializeField] AnimatorOverrideController overrideController;
+
+    public abstract void Attack();
+
     public string GetAttachSlotTag()
     {
         return AttachSlotTag;
@@ -26,6 +30,7 @@ public abstract class Weapon : MonoBehaviour
     {
         gameObject.SetActive(true);
         Owner.GetComponent<Animator>().runtimeAnimatorController = overrideController;
+        Owner.GetComponent<Animator>().SetFloat("AttackRateMult", AttackRateMult);
     }
 
     public void UnEquip()
