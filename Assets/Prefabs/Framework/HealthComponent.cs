@@ -17,7 +17,7 @@ public class HealthComponent : MonoBehaviour
 
     public void changeHealth(float amt)
     {
-        if(amt == 0)
+        if(amt == 0 || health == 0)
         {
             return;
         }
