@@ -4,8 +4,16 @@ using UnityEngine;
 
 public abstract class SenseComp : MonoBehaviour
 {
+    [SerializeField] float forgettingTime = 3f;
     static List<PerceptionStimuli> registeredStimulis = new List<PerceptionStimuli>();
     List<PerceptionStimuli> PerceivableStimulis = new List<PerceptionStimuli> ();
+
+    Dictionary<PerceptionStimuli, Coroutine> ForgettingRoutines = new Dictionary<PerceptionStimuli, Coroutine>();
+
+    public delegate void OnPerceptionUpdated(PerceptionStimuli stimuli, bool succsessfulySensed);
+
+    public event OnPerceptionUpdated onPerceptionUpdated;
+
     static public void RegisterStimuli(PerceptionStimuli stimuli)
     {
         if (registeredStimulis.Contains(stimuli))
@@ -31,7 +39,15 @@ public abstract class SenseComp : MonoBehaviour
                 if(!PerceivableStimulis.Contains(stimuli))
                 {
                     PerceivableStimulis.Add(stimuli);
-                    Debug.Log($"I just sensed {stimuli.gameObject}");
+                    if(ForgettingRoutines.TryGetValue(stimuli, out Coroutine routine))
+                    {
+                        StopCoroutine(routine);
+                        ForgettingRoutines.Remove(stimuli);
+                    }
+                    else
+                    {
+                        onPerceptionUpdated?.Invoke(stimuli, true);
+                    }
                 }
             }
             else
@@ -39,10 +55,17 @@ public abstract class SenseComp : MonoBehaviour
                 if(PerceivableStimulis.Contains(stimuli))
                 {
                     PerceivableStimulis.Remove(stimuli);
-                    Debug.Log($"I lost track of {stimuli.gameObject}");
+                    ForgettingRoutines.Add(stimuli, StartCoroutine(ForgetStimuli(stimuli)));
                 }
             }
         }
+    }
+
+    IEnumerator ForgetStimuli(PerceptionStimuli stimuli)
+    {
+        yield return new WaitForSeconds(forgettingTime);
+        ForgettingRoutines.Remove(stimuli);
+        onPerceptionUpdated?.Invoke(stimuli, false);
     }
 
     protected virtual void DrawDebug()
