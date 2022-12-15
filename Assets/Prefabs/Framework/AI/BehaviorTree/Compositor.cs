@@ -7,6 +7,11 @@ public abstract class Compositor : BTNode
     LinkedList<BTNode> children = new LinkedList<BTNode>();
     LinkedListNode<BTNode> currentChild = null;
 
+    public void AddChild(BTNode newChild)
+    {
+        children.AddLast(newChild);
+    }
+
     protected override NodeResult Execute()
     {
         if(children.Count == 0)
@@ -16,6 +21,11 @@ public abstract class Compositor : BTNode
 
         currentChild = children.First;
         return NodeResult.Inprogress;
+    }
+
+    protected BTNode GetCurrentChild()
+    {
+        return currentChild.Value;
     }
 
     protected bool Next()

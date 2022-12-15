@@ -32,7 +32,7 @@ public class BTTask_Wait : BTNode
             Debug.Log("Wait finished");
             return NodeResult.Success;
         }
-        Debug.Log($"Waiting for {timeElapsed}");
+        //Debug.Log($"Waiting for {timeElapsed}");
         return NodeResult.Inprogress;
     }
 }
