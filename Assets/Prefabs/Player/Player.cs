@@ -93,6 +93,8 @@ public class Player : MonoBehaviour
 
         animator.SetFloat("forwardSpeed", forward);
         animator.SetFloat("rightSpeed", right);
+
+        characterController.Move(Vector3.down * Time.deltaTime * 10f);
     }
 
     private void UpdateAim(Vector3 currentMoveDir)
