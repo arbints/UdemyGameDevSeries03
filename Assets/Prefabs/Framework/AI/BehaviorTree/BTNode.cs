@@ -77,4 +77,9 @@ public abstract class BTNode
         priority = priorityConter++;
         Debug.Log($"{this} has priorty {priority}");
     }
+
+    public virtual BTNode Get()
+    {
+        return this;
+    }
 }

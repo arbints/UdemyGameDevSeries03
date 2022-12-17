@@ -54,7 +54,6 @@ public class BlackboardDecorator : Decorator
             return NodeResult.Failure;
 
         blackboard.onBlackboardValueChange -= CheckNotify;
-
         blackboard.onBlackboardValueChange += CheckNotify;
 
         if (CheckRunCondition())
@@ -130,7 +129,7 @@ public class BlackboardDecorator : Decorator
 
     private void AbortLower()
     {
-        
+        tree.AbortLowerThan(GetPriority());
     }
 
     private void AbortSelf()

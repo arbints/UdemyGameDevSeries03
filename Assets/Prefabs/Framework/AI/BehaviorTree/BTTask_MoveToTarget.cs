@@ -67,4 +67,11 @@ public class BTTask_MoveToTarget : BTNode
     {
         return Vector3.Distance(target.transform.position, tree.transform.position) <= acceptableDistance;
     }
+
+    protected override void End()
+    {
+        agent.isStopped = true;
+        tree.Blackboard.onBlackboardValueChange -= BlackboardValueChanged;
+        base.End();
+    }
 }

@@ -33,4 +33,13 @@ public abstract class BehaviorTree : MonoBehaviour
     {
         Root.UpdateNode();
     }
+
+    public void AbortLowerThan(int priority)
+    {
+        BTNode currentNode = Root.Get();
+        if(currentNode.GetPriority() > priority)
+        {
+            Root.Abort();
+        }
+    }
 }

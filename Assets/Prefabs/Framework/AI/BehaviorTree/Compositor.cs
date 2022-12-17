@@ -56,4 +56,21 @@ public abstract class Compositor : BTNode
             child.SortPriority(ref priorityConter);
         }
     }
+
+    public override BTNode Get()
+    {
+        if(currentChild == null)
+        {
+            if(children.Count!=0)
+            {
+                return children.First.Value.Get();
+            }
+            else
+            {
+                return this;
+            }
+        }
+
+        return currentChild.Value.Get();
+    }
 }
