@@ -15,4 +15,10 @@ public abstract class Decorator : BTNode
     {
         this.child = child;
     }
+
+    public override void SortPriority(ref int priorityConter)
+    {
+        base.SortPriority(ref priorityConter);
+        child.SortPriority(ref priorityConter);
+    }
 }
