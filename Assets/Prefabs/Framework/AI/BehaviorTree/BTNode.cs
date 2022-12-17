@@ -59,5 +59,10 @@ public abstract class BTNode
         End();
     }
 
+    public void Abort()
+    {
+        EndNode();
+    }
+
     bool started = false;
 }
