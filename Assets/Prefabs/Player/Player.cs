@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] JoyStick aimStick;
     [SerializeField] CharacterController characterController; 
     [SerializeField] float moveSpeed = 20f; 
-    [SerializeField] float turnSpeed = 30f; 
     [SerializeField] float animTurnSpeed = 30f;
+    [SerializeField] MovementComponent movementComponent;
 
     [Header("Inventory")]
     [SerializeField] InventoryComponent inventoryComponent;
@@ -118,19 +118,7 @@ public class Player : MonoBehaviour
 
     private void RotateTowards(Vector3 AimDir)
     {
-        float currentTurnSpeed = 0;
-        if (AimDir.magnitude != 0)
-        {
-            Quaternion prevRot = transform.rotation;
-        
-            float turnLerpAlpha = turnSpeed * Time.deltaTime;
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(AimDir, Vector3.up), turnLerpAlpha);
-
-            Quaternion currentRot = transform.rotation;
-            float Dir = Vector3.Dot(AimDir, transform.right) > 0 ? 1 : -1;
-            float rotationDelta = Quaternion.Angle(prevRot, currentRot) * Dir;
-            currentTurnSpeed = rotationDelta / Time.deltaTime;
-        }
+        float currentTurnSpeed = movementComponent.RotateTowards(AimDir);
         animatorTurnSpeed = Mathf.Lerp(animatorTurnSpeed, currentTurnSpeed, Time.deltaTime * animTurnSpeed);
 
         animator.SetFloat("turnSpeed", animatorTurnSpeed);
