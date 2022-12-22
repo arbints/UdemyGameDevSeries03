@@ -25,7 +25,7 @@ public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface, ITeamInterf
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         if(healthComponent!=null)
         {

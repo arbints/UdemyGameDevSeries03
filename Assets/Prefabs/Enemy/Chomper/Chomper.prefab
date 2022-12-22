@@ -1,5 +1,101 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4328223452632110851
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6206257015168124556}
+    m_Modifications:
+    - target: {fileID: 1683615706222646270, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: m_Name
+      value: TriggerDamager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818955673627322109, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818955673627322109, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2042
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818955673627322109, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818955673627322109, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.605
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818955673627322109, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.072
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818955673627322109, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818955673627322109, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818955673627322109, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818955673627322109, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818955673627322109, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818955673627322109, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818955673627322109, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980911823798833834, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: startedEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980911823798833834, guid: a6a94480924af3c43a8bb913153e4e6c,
+        type: 3}
+      propertyPath: teamIntefaceSrc
+      value: 
+      objectReference: {fileID: 5087181213314630943}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a6a94480924af3c43a8bb913153e4e6c, type: 3}
+--- !u!114 &6697378338681144745 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6980911823798833834, guid: a6a94480924af3c43a8bb913153e4e6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4328223452632110851}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65726bebcb5c677408a6a6631da82fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5372088953121645410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -155,6 +251,8 @@ MonoBehaviour:
   perceptionComp: {fileID: 7707520349536220044}
   behaviorTree: {fileID: 7096234497985976870}
   movementComponent: {fileID: 7707520349103594002}
+  TeamID: 2
+  damageComponent: {fileID: 6697378338681144745}
 --- !u!114 &7096234497985976870
 MonoBehaviour:
   m_ObjectHideFlags: 0
