@@ -13,10 +13,11 @@ public class ChomperBehavior : BehaviorTree
         BTTask_MoveToTarget moveToTarget = new BTTask_MoveToTarget(this, "Target", 2);
 
         BTTask_RotateTowardsTarget rotateTowardsTarget = new BTTask_RotateTowardsTarget(this, "Target", 10f);
-        //attack
+        BTTask_AttackTarget attackTarget = new BTTask_AttackTarget(this, "Target");
 
         attackTargetSeq.AddChild(moveToTarget);
         attackTargetSeq.AddChild(rotateTowardsTarget);
+        attackTargetSeq.AddChild(attackTarget);
 
         BlackboardDecorator attackTargetDecorator = new BlackboardDecorator(this,
                                                                             attackTargetSeq, 

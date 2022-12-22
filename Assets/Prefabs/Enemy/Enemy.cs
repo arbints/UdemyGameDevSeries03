@@ -3,13 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IBehaviorTreeInterface
+public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface
 {
     [SerializeField] HealthComponent healthComponent;
     [SerializeField] Animator animator;
     [SerializeField] PerceptionComponent perceptionComp;
     [SerializeField] BehaviorTree behaviorTree;
     [SerializeField] MovementComponent movementComponent;
+
+    public Animator Animator
+    {
+        get { return animator; }
+        private set { animator = value; }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -82,5 +88,10 @@ public class Enemy : MonoBehaviour, IBehaviorTreeInterface
         AimDir = AimDir.normalized;
 
         movementComponent.RotateTowards(AimDir);
+    }
+
+    public virtual void AttackTarget(GameObject target)
+    {
+        //override in child
     }
 }
