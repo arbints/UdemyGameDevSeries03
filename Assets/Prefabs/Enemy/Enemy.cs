@@ -11,6 +11,8 @@ public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface
     [SerializeField] BehaviorTree behaviorTree;
     [SerializeField] MovementComponent movementComponent;
 
+    Vector3 prevPos;
+
     public Animator Animator
     {
         get { return animator; }
@@ -26,6 +28,7 @@ public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface
             healthComponent.onTakeDamage += TakenDamage;
         }
         perceptionComp.onPerceptionTargetChanged += TargetChanged;
+        prevPos = transform.position;
     }
 
     private void TargetChanged(GameObject target, bool sensed)
@@ -67,7 +70,16 @@ public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface
     // Update is called once per frame
     void Update()
     {
-        
+        CalculateSpeed();
+    }
+
+    private void CalculateSpeed()
+    {
+        Vector3 posDelta = transform.position - prevPos;
+        float speed = posDelta.magnitude / Time.deltaTime;
+        Debug.Log($"current speed is {speed}");
+        Animator.SetFloat("Speed", speed);
+        prevPos = transform.position;
     }
 
     private void OnDrawGizmos()
