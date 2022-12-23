@@ -28,8 +28,9 @@ public abstract class BehaviorTree : MonoBehaviour
     private void SortTree()
     {
         int priortyCounter = 0;
+        Root.Initialize();
         Root.SortPriority(ref priortyCounter);
-       
+        
     }
 
     protected abstract void ConstructTree(out BTNode rootNode);

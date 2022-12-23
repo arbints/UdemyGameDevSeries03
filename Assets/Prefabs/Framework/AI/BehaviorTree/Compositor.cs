@@ -57,6 +57,15 @@ public abstract class Compositor : BTNode
         }
     }
 
+    public override void Initialize()
+    {
+        base.Initialize();
+        foreach (var child in children)
+        {
+            child.Initialize();
+        }
+    }
+
     public override BTNode Get()
     {
         if(currentChild == null)
