@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,10 @@ public class Player : MonoBehaviour, ITeamInterface
 
     [Header("Inventory")]
     [SerializeField] InventoryComponent inventoryComponent;
+
+    [Header("HeathAndDamage")]
+    [SerializeField] HealthComponent healthComponent;
+    [SerializeField] PlayerHealthBar healthBar;
 
     Vector2 moveInput;
     Vector2 aimInput;
@@ -38,6 +43,13 @@ public class Player : MonoBehaviour, ITeamInterface
         mainCam = Camera.main;
         cameraController = FindObjectOfType<CameraController>();
         animator = GetComponent<Animator>();
+        healthComponent.onHealthChange += HealthChanged;
+        healthComponent.BroadcastHealthValueImmeidately();
+    }
+
+    private void HealthChanged(float health, float delta, float maxHealth)
+    {
+        healthBar.UpdateHealth(health, delta, maxHealth);
     }
 
     public void AttackPoint()
