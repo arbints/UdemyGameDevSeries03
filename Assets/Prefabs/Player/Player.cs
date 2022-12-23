@@ -20,6 +20,8 @@ public class Player : MonoBehaviour, ITeamInterface
     [SerializeField] HealthComponent healthComponent;
     [SerializeField] PlayerHealthBar healthBar;
 
+    [Header("UI")]
+    [SerializeField] UIManager uiManager;
     Vector2 moveInput;
     Vector2 aimInput;
 
@@ -52,6 +54,7 @@ public class Player : MonoBehaviour, ITeamInterface
     {
         animator.SetLayerWeight(2, 1);
         animator.SetTrigger("Death");
+        uiManager.SetGameplayControlEnabled(false);
     }
 
     private void HealthChanged(float health, float delta, float maxHealth)

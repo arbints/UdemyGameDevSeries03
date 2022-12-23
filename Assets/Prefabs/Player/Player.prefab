@@ -13,6 +13,10 @@ GameObject:
   - component: {fileID: 624104883165026967}
   - component: {fileID: 4937742815914305079}
   - component: {fileID: -6449593807285082805}
+  - component: {fileID: 1880867737}
+  - component: {fileID: 1880867738}
+  - component: {fileID: 1880867743}
+  - component: {fileID: 1880867748}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -52,9 +56,13 @@ MonoBehaviour:
   aimStick: {fileID: 0}
   characterController: {fileID: 624104883165026967}
   moveSpeed: 5
-  turnSpeed: 8
   animTurnSpeed: 15
+  movementComponent: {fileID: 1880867738}
+  TeamID: 1
   inventoryComponent: {fileID: -6449593807285082805}
+  healthComponent: {fileID: 1880867743}
+  healthBar: {fileID: 0}
+  uiManager: {fileID: 0}
 --- !u!143 &624104883165026967
 CharacterController:
   m_ObjectHideFlags: 0
@@ -112,6 +120,63 @@ MonoBehaviour:
   weaponSlots:
   - {fileID: 420227903429553213}
   - {fileID: 1976266489479550788}
+--- !u!114 &1880867737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3241182179890133216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa757683eddb7594397eccde49a5424a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1880867738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3241182179890133216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcadaccd4be72c4429b99d3d01ce90e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnSpeed: 8
+--- !u!114 &1880867743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3241182179890133216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04efb0c7907e3794eb184fc77aba7568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  maxhealth: 10
+--- !u!114 &1880867748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3241182179890133216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270d4d69b65cb8f478e98ed8cec73675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 1386500094595029298}
+  DamageEmmisionColor: {r: 1, g: 1, b: 1, a: 0}
+  BlinkSpeed: 20
+  EmmisionColorPropertyName: _Addition
+  healthComponent: {fileID: 1880867743}
+  shaker: {fileID: 0}
 --- !u!1 &3579252758759181381
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +309,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9500000, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
+--- !u!137 &1386500094595029298 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 13700002, guid: a5674d01884853d4e8f2386a171e14d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1386500094600204944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1386500094600595894 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400166, guid: a5674d01884853d4e8f2386a171e14d9,
