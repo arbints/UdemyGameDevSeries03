@@ -44,7 +44,14 @@ public class Player : MonoBehaviour, ITeamInterface
         cameraController = FindObjectOfType<CameraController>();
         animator = GetComponent<Animator>();
         healthComponent.onHealthChange += HealthChanged;
+        healthComponent.onHealthEmpty += StartDeathSequence;
         healthComponent.BroadcastHealthValueImmeidately();
+    }
+
+    private void StartDeathSequence()
+    {
+        animator.SetLayerWeight(2, 1);
+        animator.SetTrigger("Death");
     }
 
     private void HealthChanged(float health, float delta, float maxHealth)
