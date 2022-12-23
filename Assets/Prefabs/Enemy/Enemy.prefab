@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 859256842}
   - component: {fileID: 859256843}
   - component: {fileID: 859256850}
+  - component: {fileID: 8559430207502193569}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -233,6 +234,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: 8
+--- !u!114 &8559430207502193569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3202007347433432863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fffaf21f8e4127438f0e0c0064b15e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 0}
+  DamageEmmisionColor: {r: 1, g: 1, b: 1, a: 0}
+  BlinkSpeed: 20
+  EmmisionColorPropertyName: _Addition
+  healthComponent: {fileID: 2869211946005787790}
 --- !u!1 &5271364803249228029
 GameObject:
   m_ObjectHideFlags: 0
