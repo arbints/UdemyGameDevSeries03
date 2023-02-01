@@ -73,6 +73,7 @@ public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface, ITeamInterf
 
     public void OnDeathAnimationFinished()
     {
+        Dead();
         Destroy(gameObject);
     }
 
@@ -129,4 +130,6 @@ public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface, ITeamInterf
             }
         }
     }
+
+    protected virtual void Dead() { }
 }
