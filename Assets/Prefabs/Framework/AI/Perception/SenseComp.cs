@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -58,6 +59,19 @@ public abstract class SenseComp : MonoBehaviour
                     ForgettingRoutines.Add(stimuli, StartCoroutine(ForgetStimuli(stimuli)));
                 }
             }
+        }
+    }
+
+    internal void AssignPerceivedStimuli(PerceptionStimuli targetStimuli)
+    {
+        PerceivableStimulis.Add(targetStimuli);
+        onPerceptionUpdated?.Invoke(targetStimuli, true);
+
+        //TODO: WHAT IF WE ARE FORETTING IT.
+        if(ForgettingRoutines.TryGetValue(targetStimuli, out Coroutine forgetCoroutine))
+        {
+            StopCoroutine(forgetCoroutine);
+            ForgettingRoutines.Remove(targetStimuli);
         }
     }
 

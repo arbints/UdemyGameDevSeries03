@@ -34,5 +34,10 @@ public class SpawnComponent : MonoBehaviour
     {
         int randomPick = Random.Range(0, objectsToSpawn.Length);
         GameObject newSpawn = Instantiate(objectsToSpawn[randomPick], spawnTransform.position, spawnTransform.rotation);
+        ISpawnInterface newSpawnInterface = newSpawn.GetComponent<ISpawnInterface>();
+        if(newSpawnInterface!=null)
+        {
+            newSpawnInterface.SpawnedBy(gameObject);
+        }
     }
 }
