@@ -80,6 +80,8 @@ public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface, ITeamInterf
 
     private void CalculateSpeed()
     {
+        if (movementComponent == null) return;
+
         Vector3 posDelta = transform.position - prevPos;
         float speed = posDelta.magnitude / Time.deltaTime;
         Animator.SetFloat("Speed", speed);
