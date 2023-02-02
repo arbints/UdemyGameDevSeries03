@@ -9,9 +9,17 @@ public class Player : MonoBehaviour, ITeamInterface
     [SerializeField] JoyStick aimStick;
     [SerializeField] CharacterController characterController; 
     [SerializeField] float moveSpeed = 20f; 
+    [SerializeField] float maxMoveSpeed = 80f; 
+    [SerializeField] float minMoveSpeed = 5f; 
     [SerializeField] float animTurnSpeed = 30f;
     [SerializeField] MovementComponent movementComponent;
     [SerializeField] int TeamID = 1;
+
+    internal void AddMoveSpeed(float boostAmt)
+    {
+        moveSpeed += boostAmt;
+        moveSpeed = Mathf.Clamp(moveSpeed, minMoveSpeed, maxMoveSpeed);
+    }
 
     [Header("Inventory")]
     [SerializeField] InventoryComponent inventoryComponent;
