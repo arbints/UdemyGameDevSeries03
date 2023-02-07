@@ -167,3 +167,4 @@ MonoBehaviour:
   LayoutGrp: {fileID: 6575938748907770153}
   AbilityUIPrefab: {fileID: -5694949144044780329, guid: 4c80e8a91a4b45844b57c04df9503d52,
     type: 3}
+  ScaleRange: 100
