@@ -40,13 +40,18 @@ public abstract class Ability : ScriptableObject
     {
         if (abilityOnCooldown) return false;
 
-        if(abilityComponent == null || abilityComponent.TryConsumeStamina(staminaCost))
+        if(abilityComponent == null || !abilityComponent.TryConsumeStamina(staminaCost))
             return false;
 
         StartAbilityCooldown();
         //...
 
         return true;
+    }
+
+    internal float GetCooldownDuration()
+    {
+        return cooldownDuration;
     }
 
     void StartAbilityCooldown()

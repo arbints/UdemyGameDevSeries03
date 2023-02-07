@@ -9,6 +9,8 @@ public class AbilityUI : MonoBehaviour
     [SerializeField] Image AbilityIcon;
     [SerializeField] Image CooldownWheel;
 
+    bool bIsOnCooldown = false;
+    float CooldownCounter = 0f;
     
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,31 @@ public class AbilityUI : MonoBehaviour
 
     private void StartCooldown()
     {
-        
+        if (bIsOnCooldown) return;
+
+        StartCoroutine(CooldownCoroutine());
+    }
+
+    internal void ActivateAbility()
+    {
+        ability.ActivateAbility();
+    }
+
+    IEnumerator CooldownCoroutine()
+    {
+        bIsOnCooldown = true;
+        CooldownCounter = ability.GetCooldownDuration();
+        float cooldownDuration = CooldownCounter;
+        CooldownWheel.enabled = true;
+
+        while(CooldownCounter>0)
+        {
+            CooldownCounter -= Time.deltaTime;
+            CooldownWheel.fillAmount = CooldownCounter / cooldownDuration;
+            yield return new WaitForEndOfFrame();
+        }
+
+        bIsOnCooldown = false;
+        CooldownWheel.enabled = false;
     }
 }
