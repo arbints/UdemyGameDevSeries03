@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 5974496562497333254}
   - component: {fileID: 5454879551823223009}
   - component: {fileID: 5922245790536581820}
-  - component: {fileID: 2811923933774729894}
+  - component: {fileID: 2443279383912831499}
   m_Layer: 5
   m_Name: PlayerHealthBar
   m_TagString: Untagged
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2811923933774729894
+--- !u!114 &2443279383912831499
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
