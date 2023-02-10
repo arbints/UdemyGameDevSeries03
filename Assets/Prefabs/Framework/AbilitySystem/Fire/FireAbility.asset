@@ -19,5 +19,7 @@ MonoBehaviour:
     type: 3}
   fireRadius: 20
   fireDuration: 0.5
-  scanVFX: {fileID: 1687799100201466535, guid: 912aadd7276bb314e8092d97858efd7f, type: 3}
+  damageDuration: 3
+  fireDamage: 60
+  ScanVFX: {fileID: 1687799100201466535, guid: 912aadd7276bb314e8092d97858efd7f, type: 3}
   DamageVFX: {fileID: 100004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
