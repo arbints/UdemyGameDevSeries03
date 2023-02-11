@@ -15,6 +15,17 @@ public class Player : MonoBehaviour, ITeamInterface
     [SerializeField] MovementComponent movementComponent;
     [SerializeField] int TeamID = 1;
 
+    //TODO: REMOVE, TESTING ONLY
+    [SerializeField] ShopSystem testShopSystem;
+    //TODO: REMOVE, TESTING ONLY
+    [SerializeField] ShopItem testItem;
+    //TODO: REMOVE, TESTING ONLY
+    void TestPurchase()
+    {
+        testShopSystem.TryPurchase(testItem, GetComponent<CreditComponent>());
+    }
+
+
     internal void AddMoveSpeed(float boostAmt)
     {
         moveSpeed += boostAmt;
@@ -63,6 +74,8 @@ public class Player : MonoBehaviour, ITeamInterface
 
         abilityComponent.onStaminaChange += StaminaChanged;
         abilityComponent.BroadcastStaminaChangeImmedietely();
+
+        Invoke("TestPurchase", 3);
     }
 
     private void StaminaChanged(float newAmount, float maxAmount)
