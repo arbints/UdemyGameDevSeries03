@@ -36,7 +36,13 @@ public class ShopUI : MonoBehaviour
         if (!selectedItem || !shopSystem.TryPurchase(selectedItem.GetItem(), creditComp))
             return;
 
-        Destroy(selectedItem.gameObject);
+        RemoveItem(selectedItem);
+    }
+
+    private void RemoveItem(ShopItemUI itemToRemove)
+    {
+        shopItems.Remove(itemToRemove);
+        Destroy(itemToRemove.gameObject);
     }
 
     private void UpdateCredit(int newCredit)

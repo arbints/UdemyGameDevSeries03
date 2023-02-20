@@ -16,4 +16,14 @@ MonoBehaviour:
   Price: 120
   Item: {fileID: 11400000, guid: c016339ad885a874884c90e30b008c3d, type: 2}
   ItemIcon: {fileID: 21300000, guid: a77e13df872b20f49b62c6697a1b3db1, type: 3}
-  Description: An ability that cast fire to a range and deal constant damage
+  Description: 'An ability that cast fire to surrounding enemies
+
+
+    Range: 20m
+
+    Damage:
+    60
+
+    Duration: 3s
+
+'

@@ -28,6 +28,7 @@ public class ShopItemUI : MonoBehaviour
     private void Start()
     {
         button.onClick.AddListener(ItemSelected);
+        //DescriptionText.autoSizeTextContainer = true;
     }
 
     private void ItemSelected()
