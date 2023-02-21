@@ -223,6 +223,10 @@ MonoBehaviour:
   behaviorTree: {fileID: -3462349908550753952}
   movementComponent: {fileID: 0}
   TeamID: 2
+  killReward:
+    healthReward: 20
+    creditReward: 30
+    staminaReward: 20
   DeathVFX:
   - particleSystem: {fileID: 5515065002404772068, guid: b5c8ca7ed10b61e499cce8ec3b6e2e4c,
       type: 3}

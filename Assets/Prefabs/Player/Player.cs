@@ -70,7 +70,7 @@ public class Player : MonoBehaviour, ITeamInterface
         staminaBar.UpdateValue(newAmount, 0, maxAmount);
     }
 
-    private void StartDeathSequence()
+    private void StartDeathSequence(GameObject Killer)
     {
         animator.SetLayerWeight(2, 1);
         animator.SetTrigger("Death");
