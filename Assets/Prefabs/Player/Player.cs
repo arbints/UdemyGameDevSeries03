@@ -171,4 +171,9 @@ public class Player : MonoBehaviour, ITeamInterface
 
         animator.SetFloat("turnSpeed", animatorTurnSpeed);
     }
+
+    public void DeathFinished()
+    {
+        uiManager.SwithToDeathMenu();
+    }
 }

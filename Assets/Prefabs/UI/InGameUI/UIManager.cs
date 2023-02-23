@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] CanvasGroup GameplayControl;
     [SerializeField] CanvasGroup PauseMenu;
     [SerializeField] CanvasGroup Shop;
+    [SerializeField] CanvasGroup DeathMenu;
 
     List<CanvasGroup> AllChildren = new List<CanvasGroup>();
 
@@ -77,5 +78,11 @@ public class UIManager : MonoBehaviour
     {
         grp.interactable = enabled;
         grp.blocksRaycasts = enabled;
+    }
+
+    internal void SwithToDeathMenu()
+    {
+        SetCurrentActiveGrp(DeathMenu);
+        GameplayStatics.SetGamePaused(true);
     }
 }
