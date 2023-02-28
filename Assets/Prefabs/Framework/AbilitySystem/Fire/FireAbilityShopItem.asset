@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireAbilityShopItem
   m_EditorClassIdentifier: 
   Title: Fire Ability
-  Price: 120
+  Price: 100
   Item: {fileID: 11400000, guid: c016339ad885a874884c90e30b008c3d, type: 2}
   ItemIcon: {fileID: 21300000, guid: a77e13df872b20f49b62c6697a1b3db1, type: 3}
   Description: 'An ability that cast fire to surrounding enemies

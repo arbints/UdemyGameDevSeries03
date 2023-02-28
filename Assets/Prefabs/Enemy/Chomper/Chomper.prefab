@@ -265,7 +265,7 @@ MonoBehaviour:
   TeamID: 2
   killReward:
     healthReward: 0
-    creditReward: 20
+    creditReward: 10
     staminaReward: 10
   damageComponent: {fileID: 6697378338681144745}
 --- !u!114 &7096234497985976870

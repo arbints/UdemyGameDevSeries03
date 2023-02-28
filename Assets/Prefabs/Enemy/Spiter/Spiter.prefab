@@ -49,6 +49,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 22100000, guid: e4a56753de7ecc144ad4eeddd0db1117,
         type: 2}
+    - target: {fileID: 2869211946005787790, guid: dff35d969f7a9e545aa40bbc097d9eb8,
+        type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869211946005787790, guid: dff35d969f7a9e545aa40bbc097d9eb8,
+        type: 3}
+      propertyPath: maxhealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3202007347433432863, guid: dff35d969f7a9e545aa40bbc097d9eb8,
         type: 3}
       propertyPath: m_Name
@@ -178,8 +188,8 @@ MonoBehaviour:
   TeamID: 2
   killReward:
     healthReward: 0
-    creditReward: 25
-    staminaReward: 30
+    creditReward: 20
+    staminaReward: 20
   projectilePrefab: {fileID: 6488221002350882715, guid: 53f6bde984be0244daba1ccc569eca75,
     type: 3}
   launchPoint: {fileID: 3483458108403196110}
