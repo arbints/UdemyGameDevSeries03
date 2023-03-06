@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Ability/SpeedBoost")]
 public class SpeedBoostAbility : Ability
 {
+    [Header("SpeedBoost")]
     [SerializeField] float boostAmt = 20f;
     [SerializeField] float boostDuration = 2f;
 

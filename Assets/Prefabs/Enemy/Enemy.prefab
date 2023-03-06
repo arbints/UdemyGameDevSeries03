@@ -175,6 +175,8 @@ MonoBehaviour:
   - {fileID: 493769099}
   - {fileID: 493769091}
   - {fileID: 859256834}
+  DetectionAudio: {fileID: 8300000, guid: b63b23c284dc045fcbccd1131f3242bc, type: 3}
+  volume: 1
 --- !u!114 &859256834
 MonoBehaviour:
   m_ObjectHideFlags: 0

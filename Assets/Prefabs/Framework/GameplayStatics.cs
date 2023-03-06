@@ -55,4 +55,9 @@ public static class GameplayStatics
         yield return new WaitForSeconds(length);
         AudioPool.Release(newSrc);
     }
+
+    internal static void PlayAudioAtPlayer(AudioClip abilityAudio, float volume)
+    {
+        PlayAudioAtLoc(abilityAudio,Camera.main.transform.position, volume);
+    }
 }
