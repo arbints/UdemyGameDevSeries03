@@ -56,9 +56,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2869211946005787790, guid: dff35d969f7a9e545aa40bbc097d9eb8,
         type: 3}
+      propertyPath: volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869211946005787790, guid: dff35d969f7a9e545aa40bbc097d9eb8,
+        type: 3}
+      propertyPath: HitAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: c1c63d14bc9d9497b8f9b39c4ea3b1c7, type: 3}
+    - target: {fileID: 2869211946005787790, guid: dff35d969f7a9e545aa40bbc097d9eb8,
+        type: 3}
       propertyPath: maxhealth
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2869211946005787790, guid: dff35d969f7a9e545aa40bbc097d9eb8,
+        type: 3}
+      propertyPath: DeathAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: b63b23c284dc045fcbccd1131f3242bc, type: 3}
     - target: {fileID: 3202007347433432863, guid: dff35d969f7a9e545aa40bbc097d9eb8,
         type: 3}
       propertyPath: m_Name

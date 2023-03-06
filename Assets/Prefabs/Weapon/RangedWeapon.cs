@@ -14,6 +14,7 @@ public class RangedWeapon : Weapon
 
         bulletVfx.transform.rotation = Quaternion.LookRotation(aimDir);
         bulletVfx.Emit(bulletVfx.emission.GetBurst(0).maxCount);
+        PlayWeaponAudio();
     }
 
     // Start is called before the first frame update
