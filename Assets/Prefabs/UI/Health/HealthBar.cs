@@ -22,8 +22,11 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
-        Vector3 attachScreenPoint = Camera.main.WorldToScreenPoint(_attachPoint.position);
-        transform.position = attachScreenPoint;
+        if(transform!=null)
+        {
+            Vector3 attachScreenPoint = Camera.main.WorldToScreenPoint(_attachPoint.position);
+            transform.position = attachScreenPoint;
+        }
     }
 
     internal void OnOwnerDead(GameObject Killer)

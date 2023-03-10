@@ -12,7 +12,7 @@ public class PlayerValueGauge : MonoBehaviour
     internal void UpdateValue(float health, float delta, float maxHealth)
     {
         AmtImage.fillAmount = health / maxHealth;
-        int healthAsInt = (int)health;
+        int healthAsInt = (int)health >= 0 ? (int)health : 0;
         AmtText.SetText(healthAsInt.ToString());
     }
 }

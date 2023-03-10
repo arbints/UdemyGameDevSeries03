@@ -62,6 +62,8 @@ public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface, ITeamInterf
     private void StartDeath(GameObject Killer)
     {
         TriggerDeathAnimation();
+        behaviorTree.StopLogic();
+        GetComponent<CapsuleCollider>().enabled = false;
         IRewardListener[] RewardListeners = Killer.GetComponents<IRewardListener>();
         foreach(IRewardListener listener in RewardListeners)
         {

@@ -33,6 +33,9 @@ public class UIAudioPlayer : ScriptableObject
 
     void PlayAudio(AudioClip audioToPlay)
     {
-        Camera.main.GetComponent<AudioSource>().PlayOneShot(audioToPlay);
+        if(Camera.main != null)
+        {
+            Camera.main.GetComponent<AudioSource>().PlayOneShot(audioToPlay);
+        }
     }
 }
