@@ -5,10 +5,13 @@ using UnityEngine;
 public class EnemyCounter : MonoBehaviour
 {
     static int EnemyCount = 0;
+    public delegate void OnEnemyCountUpdated(int newCount);
+    public static event OnEnemyCountUpdated EnemyCountUpdated;
     // Start is called before the first frame update
     void Start()
     {
         ++EnemyCount;
+        EnemyCountUpdated?.Invoke(EnemyCount);
     }
 
     // Update is called once per frame
@@ -20,7 +23,8 @@ public class EnemyCounter : MonoBehaviour
     private void OnDestroy()
     {
         --EnemyCount;
-        if(EnemyCount <= 0)
+        EnemyCountUpdated?.Invoke(EnemyCount);
+        if (EnemyCount <= 0)
         {
             LevelManager.LevelFinished();
         }

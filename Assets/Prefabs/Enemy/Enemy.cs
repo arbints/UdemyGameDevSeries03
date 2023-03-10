@@ -89,6 +89,11 @@ public abstract class Enemy : MonoBehaviour, IBehaviorTreeInterface, ITeamInterf
     void Update()
     {
         CalculateSpeed();
+        if (transform.position.y < -100)
+        {
+            StartDeath(gameObject);
+            Debug.Log("Enemy Dropped to oblivion");
+        }
     }
 
     private void CalculateSpeed()
